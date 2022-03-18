@@ -1,0 +1,18 @@
+1. what is the dif erence between InnoDb and MyIsam?
+    => InnoDB more complex than MyIsam
+    => InnoDB support for transactions like commit, rollback etc but MyIsam doesn't
+    => InnoDB have Foreign Key but MyIsam doesn't
+    => InnoDb recovery system more than MyIsam
+    => MyIsam support for fully text index but InnoDB not support
+
+2. List out the employees annual salary with their names only. 
+    => SELECT CONCAT_WS(' ',FIRST_NAME,MIDDLE_NAME,LAST_NAME) AS Name, (SALARY * 12) as annual_salary FROM employee;
+
+3. List out the employees who are working in department 10 and draw the salaries more than 3500
+    => SELECT * FROM employee where DEPARTMENT_ID = 10 and SALARY >= 3500;
+
+4. List out the department name, maximum salary, minimum salary, average salary of the employees
+    => SELECT A.Name, MAX(B.SALARY) AS maximum, MIN(B.SALARY) AS minimum, AVG(B.SALARY) AS average FROM department A INNER JOIN employee B ON A.Department_ID = B.DEPARTMENT_ID GROUP BY A.Name;
+    
+5. Display all employees in sales or operation departments
+    => SELECT * FROM employee A INNER JOIN department B ON A.DEPARTMENT_ID = B.Department_ID WHERE B.Name = "SALES" OR B.Name = "OPERATIONS"
